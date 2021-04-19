@@ -1,6 +1,6 @@
-package neurons.gui;
+package neurons.uesrInterface;
 
-import neurons.core.GNode;
+import neurons.core.Node;
 import javafx.application.Platform;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -10,10 +10,10 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.UUID;
 
-public class Controller extends Thread implements Initializable {
+public class GUIController extends Thread implements Initializable {
 
 
-    public GNode node;
+    public Node node;
 
     public Button buttonSearch;
     public Button leaveButton;
@@ -141,9 +141,9 @@ public class Controller extends Thread implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         String uniqueID = UUID.randomUUID().toString();
         try {
-//            node = new GNode("node" + uniqueID);
+//            node = new Node("node" + uniqueID);
 
-            node = new GNode();
+            node = new Node();
 
 
         } catch (Exception e) {

@@ -1,5 +1,7 @@
-package neurons.comms;
+package neurons.communication;
 
+
+import neurons.communication.messages.ChannelMessage;
 
 import java.io.IOException;
 import java.net.DatagramPacket;

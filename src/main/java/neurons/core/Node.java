@@ -1,9 +1,9 @@
 package neurons.core;
 
 import neurons.Constants;
-import neurons.comms.BSClient;
-import neurons.comms.ftp.FTPClient;
-import neurons.comms.ftp.FTPServer;
+import neurons.communication.BootsrapClient;
+import neurons.communication.fileTransfer.FileTransferClient;
+import neurons.communication.fileTransfer.FileTransferServer;
 import javafx.scene.control.TextArea;
 
 import java.io.IOException;
@@ -14,23 +14,23 @@ import java.net.ServerSocket;
 import java.util.List;
 import java.util.logging.Logger;
 
-public class GNode {
+public class Node {
 
-    private final Logger LOG = Logger.getLogger(GNode.class.getName());
+    private final Logger LOG = Logger.getLogger(Node.class.getName());
 
-    private BSClient bsClient;
+    private BootsrapClient bsClient;
 
     private String userName;
     private String ipAddress;
     private int port;
     private MessageBroker messageBroker;
     private SearchManager searchManager;
-    private FTPServer ftpServer;
+    private FileTransferServer fileTransferServer;
 
-//    public GNode (String userName) throws Exception {
+//    public Node (String userName) throws Exception {
 
 
-    public GNode () throws Exception {
+    public Node() throws Exception {
 
         try (final DatagramSocket socket = new DatagramSocket()){
             socket.connect(InetAddress.getByName("8.8.8.8"), 10002);
@@ -49,11 +49,11 @@ public class GNode {
 //        this.userName = userName;
 
         FileManager fileManager = FileManager.getInstance(userName);
-        this.ftpServer = new FTPServer(this.port + Constants.FTP_PORT_OFFSET, userName);
-        Thread t = new Thread(ftpServer);
+        this.fileTransferServer = new FileTransferServer(this.port + Constants.FTP_PORT_OFFSET, userName);
+        Thread t = new Thread(fileTransferServer);
         t.start();
 
-        this.bsClient = new BSClient();
+        this.bsClient = new BootsrapClient();
         this.messageBroker = new MessageBroker(ipAddress, port);
 
         this.searchManager = new SearchManager(this.messageBroker);
@@ -110,7 +110,7 @@ public class GNode {
         try {
             SearchResult fileDetail = this.searchManager.getFileDetails(fileOption);
             System.out.println("The file you requested is " + fileDetail.getFileName());
-            FTPClient ftpClient = new FTPClient(fileDetail.getAddress(), fileDetail.getTcpPort(),
+            FileTransferClient fileTransferClient = new FileTransferClient(fileDetail.getAddress(), fileDetail.getTcpPort(),
                     fileDetail.getFileName());
 
             System.out.println("Waiting for file download...");
@@ -124,7 +124,7 @@ public class GNode {
         try {
             SearchResult fileDetail = this.searchManager.getFileDetails(fileOption);
             System.out.println("The file you requested is " + fileDetail.getFileName());
-            FTPClient ftpClient = new FTPClient(fileDetail.getAddress(), fileDetail.getTcpPort(),
+            FileTransferClient fileTransferClient = new FileTransferClient(fileDetail.getAddress(), fileDetail.getTcpPort(),
                     fileDetail.getFileName(),textArea);
 
         } catch (Exception e) {

@@ -1,11 +1,11 @@
-package neurons.comms.ftp;
+package neurons.communication.fileTransfer;
 
 import javafx.scene.control.TextArea;
 
 import java.io.*;
 import java.net.Socket;
 
-public class DataReceivingOperation implements Runnable {
+public class DataReceiver implements Runnable {
 
     private Socket serverSock;
     private BufferedReader in = null;
@@ -13,12 +13,12 @@ public class DataReceivingOperation implements Runnable {
 
     private TextArea textArea;
 
-    public DataReceivingOperation(Socket server, String fileName) {
+    public DataReceiver(Socket server, String fileName) {
         this.serverSock = server;
         this.fileName = fileName;
     }
 
-    public DataReceivingOperation(Socket server, String fileName, TextArea textArea){
+    public DataReceiver(Socket server, String fileName, TextArea textArea){
         this.textArea = textArea;
         this.serverSock = server;
         this.fileName = fileName;

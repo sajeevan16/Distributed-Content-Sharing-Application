@@ -1,9 +1,9 @@
 package neurons.core;
 
 import neurons.Constants;
-import neurons.comms.ChannelMessage;
-import neurons.comms.UDPClient;
-import neurons.comms.UDPServer;
+import neurons.communication.messages.ChannelMessage;
+import neurons.communication.UDPClient;
+import neurons.communication.UDPServer;
 import neurons.handlers.*;
 
 import java.net.DatagramSocket;

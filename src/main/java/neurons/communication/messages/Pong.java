@@ -1,4 +1,4 @@
-package neurons.comms;
+package neurons.communication.messages;
 
 public class Pong implements P2PMessage{
     private final String destAddress;

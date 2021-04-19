@@ -1,4 +1,4 @@
-package neurons.comms;
+package neurons.communication;
 
 import neurons.Constants;
 
@@ -14,16 +14,16 @@ import java.util.StringTokenizer;
 import java.util.logging.Logger;
 
 
-public class BSClient {
+public class BootsrapClient {
 
-    private final Logger LOG = Logger.getLogger(BSClient.class.getName());
+    private final Logger LOG = Logger.getLogger(BootsrapClient.class.getName());
 
     private String BS_IPAddress;
     private int BS_Port;
 
     private DatagramSocket datagramSocket;
 
-    public BSClient() throws IOException{
+    public BootsrapClient() throws IOException{
 
         datagramSocket = new DatagramSocket();
 
@@ -64,21 +64,21 @@ public class BSClient {
 
         int nodesCount = Integer.parseInt(stringToken.nextToken());
 
-        List<InetSocketAddress> gNodes = null;
+        List<InetSocketAddress> nodes = null;
 
         switch (nodesCount) {
             case 0:
                 LOG.fine("Successful - No other nodes in the network");
-                gNodes = new ArrayList<>();
+                nodes = new ArrayList<>();
                 break;
 
             case 1:
                 LOG.fine("No of nodes found : 1");
 
-                gNodes = new ArrayList<>();
+                nodes = new ArrayList<>();
 
                 while (stringToken.hasMoreTokens()) {
-                    gNodes.add(new InetSocketAddress(stringToken.nextToken(),
+                    nodes.add(new InetSocketAddress(stringToken.nextToken(),
                             Integer.parseInt(stringToken.nextToken())));
                 }
                 break;
@@ -86,10 +86,10 @@ public class BSClient {
             case 2:
                 LOG.fine("No of nodes found : 2");
 
-                gNodes = new ArrayList<>();
+                nodes = new ArrayList<>();
 
                 while (stringToken.hasMoreTokens()) {
-                    gNodes.add(new InetSocketAddress(stringToken.nextToken(),
+                    nodes.add(new InetSocketAddress(stringToken.nextToken(),
                             Integer.parseInt(stringToken.nextToken())));
                 }
                 break;
@@ -110,7 +110,7 @@ public class BSClient {
                 throw new IllegalStateException("Invalid status code");
         }
 
-        return gNodes;
+        return nodes;
     }
 
     private boolean processBSUnregisterResponse(String response){

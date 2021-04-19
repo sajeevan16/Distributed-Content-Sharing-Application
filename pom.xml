@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>neurons</groupId>
-    <artifactId>filesharing</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <artifactId>contentsharing</artifactId>
+    <version>1.0</version>
 
     <name>filesharing</name>
     <!-- FIXME change it to the project's website -->
@@ -17,15 +17,6 @@
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
     </properties>
-
-<!--    <dependencies>-->
-<!--        <dependency>-->
-<!--            <groupId>junit</groupId>-->
-<!--            <artifactId>junit</artifactId>-->
-<!--            <version>4.11</version>-->
-<!--            <scope>test</scope>-->
-<!--        </dependency>-->
-<!--    </dependencies>-->
 
     <build>
         <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
@@ -53,7 +44,7 @@
                     <configuration>
                         <archive>
                             <manifest>
-                                <mainClass>neurons.gui.Main</mainClass>
+                                <mainClass>neurons.uesrInterface.GUI</mainClass>
                             </manifest>
                         </archive>
                     </configuration>

@@ -1,6 +1,6 @@
 package neurons;
 
-import neurons.core.GNode;
+import neurons.core.Node;
 
 import java.util.Scanner;
 import java.util.UUID;
@@ -14,9 +14,9 @@ public class App
     public static void main(String[] args) {
         try {
             String uniqueID = UUID.randomUUID().toString();
-//            GNode node = new GNode("node" + uniqueID);
+//            Node node = new Node("node" + uniqueID);
 
-            GNode node = new GNode();
+            Node node = new Node();
 
 
             node.init();

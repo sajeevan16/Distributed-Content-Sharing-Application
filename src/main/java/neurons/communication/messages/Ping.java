@@ -1,4 +1,4 @@
-package neurons.comms;
+package neurons.communication.messages;
 
 public class Ping implements P2PMessage {
     private final String sourceAddress;

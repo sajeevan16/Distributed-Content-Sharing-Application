@@ -1,6 +1,6 @@
 package neurons.handlers;
 
-import neurons.comms.ChannelMessage;
+import neurons.communication.messages.ChannelMessage;
 
 public interface AbstractResponseHandler extends AbstractMessageHandler {
 

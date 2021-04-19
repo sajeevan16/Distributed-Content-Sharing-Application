@@ -1,4 +1,4 @@
-package neurons.gui;
+package neurons.uesrInterface;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -6,7 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class Main extends Application {
+public class GUI extends Application {
 
     Stage window;
 
@@ -19,9 +19,9 @@ public class Main extends Application {
 
         window = primaryStage;
         FXMLLoader loader = new FXMLLoader(getClass().getResource(
-                "/first.fxml"));
+                "/gui.fxml"));
         Parent root = loader.load();
-        Controller controller = loader.getController();
+        GUIController controller = loader.getController();
         window.setOnCloseRequest(event -> {
             event.consume();
             controller.leaveAction();

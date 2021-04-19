@@ -1,4 +1,4 @@
-package neurons.comms.ftp;
+package neurons.communication.fileTransfer;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -6,14 +6,14 @@ import java.net.Socket;
 import java.util.logging.Logger;
 
 
-public class FTPServer implements Runnable{
+public class FileTransferServer implements Runnable{
 
     private ServerSocket serverSocket;
     private Socket clientsocket;
-    private final Logger LOG = Logger.getLogger(FTPServer.class.getName());
+    private final Logger LOG = Logger.getLogger(FileTransferServer.class.getName());
     private String userName;
 
-    public FTPServer(int port, String userName) throws Exception {
+    public FileTransferServer(int port, String userName) throws Exception {
         // create socket
         serverSocket = new ServerSocket(port);
         this.userName = userName;
@@ -32,7 +32,7 @@ public class FTPServer implements Runnable{
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            Thread t = new Thread(new DataSendingOperation(clientsocket, userName));
+            Thread t = new Thread(new DataSender(clientsocket, userName));
             t.start();
         }
     }

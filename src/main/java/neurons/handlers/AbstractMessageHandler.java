@@ -1,6 +1,6 @@
 package neurons.handlers;
 
-import neurons.comms.ChannelMessage;
+import neurons.communication.messages.ChannelMessage;
 import neurons.core.RoutingTable;
 import neurons.core.TimeoutManager;
 

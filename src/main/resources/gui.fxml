@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="594.0" prefWidth="1088.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="neurons.gui.Controller">
+<AnchorPane prefHeight="594.0" prefWidth="1088.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="neurons.uesrInterface.GUIController">
     <children>
         <BorderPane layoutY="-6.0" prefHeight="600.0" prefWidth="1088.0">
             <top>

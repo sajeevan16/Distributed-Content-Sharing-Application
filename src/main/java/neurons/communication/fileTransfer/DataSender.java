@@ -1,4 +1,4 @@
-package neurons.comms.ftp;
+package neurons.communication.fileTransfer;
 
 import neurons.core.FileManager;
 
@@ -6,16 +6,16 @@ import java.io.*;
 import java.net.Socket;
 import java.util.logging.Logger;
 
-public class DataSendingOperation implements Runnable {
+public class DataSender implements Runnable {
 
     private Socket clientSocket;
     private BufferedReader in = null;
 
-    private final Logger LOG = Logger.getLogger(DataSendingOperation.class.getName());
+    private final Logger LOG = Logger.getLogger(DataSender.class.getName());
 
     private String userName;
 
-    public DataSendingOperation(Socket client, String userName) {
+    public DataSender(Socket client, String userName) {
         this.clientSocket = client;
         this.userName = userName;
     }
